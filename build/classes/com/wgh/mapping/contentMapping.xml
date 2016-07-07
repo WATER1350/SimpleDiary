@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="content">
+    <insert id="insertContent" parameterType="com.wgh.model.Content">
+        insert into tb_content(userid,first,second,third,fourth,fifth,sixth,seventh,eighth)
+        values(#{userid},#{first},#{second},#{third},#{fourth},#{fifth},#{sixth},#{seventh},#{eighth})
+        
+        <!-- <selectKey keyProperty="id" resultClass="long">
+            SELECT LAST_INSERT_ID() AS value
+        </selectKey> -->
+    </insert>
+    
+    <select id="query" resultType="com.wgh.model.Content" parameterType="com.wgh.model.Content">
+    	select *
+    	from tb_content
+    	where 1=1
+    	<if test="userid!=null and userid!=''">  
+	        and userid = #{userid} 
+	    </if> 
+    </select>
+    
+    <select id="queryById" resultType="com.wgh.model.Content">
+    	select *
+    	from tb_content
+    	where id=#{id}
+    </select>
+    
+    <select id="queryForGridAndWord" parameterType="java.util.Map" resultType="java.lang.String" statementType="STATEMENT">
+    	select ${grid}
+    	from tb_content
+    	where ${grid} like ${word} 
+    	<if test="userid!=null and userid!=''">
+    	  and userid=${userid}
+    	</if>
+    </select>
+    
+    <select id="count" resultType="int">
+    	select count(*)
+    	from tb_content
+    </select>
+</mapper>

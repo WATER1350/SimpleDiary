@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="grid">
+    <select id="queryByGridId" parameterType="int" resultType="com.wgh.model.Grid">
+        select *
+        from tb_grid
+        where grid=#{grid}
+    </select>
+    
+    <select id="query" resultType="com.wgh.model.Grid">
+        select *
+        from tb_grid
+    </select>
+    
+    <update id="update" parameterType="com.wgh.model.Grid">
+        update tb_grid
+        <set>
+            <if test="firstline!=null and firstline!=''">  
+	            firstline = #{firstline}, 
+	        </if> 
+	        <if test="secondline!=null and secondline!=''">  
+	            secondline = #{secondline}, 
+	        </if>
+	        <if test="thirdline!=null and thirdline!=''">  
+	            thirdline = #{thirdline}, 
+	        </if>   
+	        <if test="fourthline!=null and fourthline!=''">  
+	            fourthline = #{fourthline}, 
+	        </if>  
+        </set>
+        <where>
+	        grid=#{grid}
+        </where>
+    </update>
+</mapper>

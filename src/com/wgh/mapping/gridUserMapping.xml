@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="gridUser">
+    <insert id="insertGridUser" parameterType="com.wgh.model.GridUser">
+        insert into tb_grid_user(userid,grid,firstline,secondline,thirdline,fourthline)
+        values(#{userid},#{grid},#{firstline},#{secondline},#{thirdline},#{fourthline})
+        
+        <!-- <selectKey keyProperty="id" resultClass="long">
+            SELECT LAST_INSERT_ID() AS value
+        </selectKey> -->
+    </insert>
+    
+    <select id="queryGridUser" parameterType="com.wgh.model.GridUser" resultType="com.wgh.model.GridUser">
+        select *
+        from tb_grid_user
+        where grid=#{grid} and userid=#{userid}
+    </select>
+    
+    <update id="update" parameterType="com.wgh.model.GridUser">
+        update tb_grid_user
+        <set>
+            <if test="firstline!=null and firstline!=''">  
+	            firstline = #{firstline}, 
+	        </if> 
+	        <if test="secondline!=null and secondline!=''">  
+	            secondline = #{secondline}, 
+	        </if>
+	        <if test="thirdline!=null and thirdline!=''">  
+	            thirdline = #{thirdline}, 
+	        </if>   
+	        <if test="fourthline!=null and fourthline!=''">  
+	            fourthline = #{fourthline}, 
+	        </if>  
+        </set>
+        <where>
+	        grid=#{grid}
+	        <if test="userid!=null and userid!=''">  
+	            and userid = #{userid} 
+	        </if> 
+        </where>
+    </update>
+</mapper>

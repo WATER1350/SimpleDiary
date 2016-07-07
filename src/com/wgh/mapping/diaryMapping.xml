@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="diary">
+    <insert id="insertDiary" parameterType="com.wgh.model.Diary">
+        insert into tb_diary(title,address,userid,detail,visibility,type)
+        values(#{title},#{address},#{userid},#{detail},#{visibility},#{type})
+        
+        <!-- <selectKey keyProperty="id" resultClass="long">
+            SELECT LAST_INSERT_ID() AS value
+        </selectKey> -->
+    </insert>
+</mapper>

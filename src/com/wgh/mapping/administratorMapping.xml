@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="administrator">
+    <select id="query" parameterType="com.wgh.model.Administrator" resultType="com.wgh.model.Administrator">
+        select * from
+        tb_administrator
+        where username=#{username} and password=#{password}
+        
+        <!-- <selectKey keyProperty="id" resultClass="long">
+            SELECT LAST_INSERT_ID() AS value
+        </selectKey> -->
+    </select>
+</mapper>

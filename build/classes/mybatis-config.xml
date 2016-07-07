@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC" />
+            <!-- 配置数据库连接信息 -->
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver" />
+                <property name="url" value="jdbc:mysql://localhost:3306/db_9griddiary" />
+                <property name="username" value="root" />
+                <property name="password" value="123456" />
+            </dataSource>
+        </environment>
+    </environments>
+    
+    <mappers>
+        <mapper resource="com/wgh/mapping/userMapping.xml"/>
+        <mapper resource="com/wgh/mapping/diaryMapping.xml"/>
+        <mapper resource="com/wgh/mapping/friendMapping.xml"/>
+        <mapper resource="com/wgh/mapping/replyMapping.xml"/>
+        <mapper resource="com/wgh/mapping/musicMapping.xml"/>
+        <mapper resource="com/wgh/mapping/gridMapping.xml"/>
+        <mapper resource="com/wgh/mapping/gridUserMapping.xml"/>
+        <mapper resource="com/wgh/mapping/contentMapping.xml"/>
+        <mapper resource="com/wgh/mapping/administratorMapping.xml"/>
+    </mappers>
+</configuration>

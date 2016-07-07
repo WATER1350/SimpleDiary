@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="reply">
+    <select id="queryReply" parameterType="int" resultType="com.wgh.model.Reply">
+        select * 
+        from tb_reply r
+        where r.diaryid = #{id}
+    </select>
+    
+    <insert id="addReply" parameterType="com.wgh.model.Reply">
+    	insert into tb_reply(whoid, whoname, whoesid, whoesname,diaryid,replyContent)
+    	values(#{whoid}, #{whoname}, #{whoesid}, #{whoesname},#{diaryid},#{replyContent})
+    </insert>
+</mapper>

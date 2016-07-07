@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="music">
+    <insert id="insertMusic" parameterType="com.wgh.model.Music">
+        insert into tb_music(userid,musicname,auto)
+        values(#{userid},#{musicname},#{auto})
+    </insert>
+    
+    <select id="queryMusic" parameterType="int" resultType="com.wgh.model.Music">
+    	select * 
+    	from tb_music
+    	where userid=#{userid}
+    </select>
+    
+    <select id="deleteMusic" parameterType="int">
+    	delete 
+    	from tb_music
+    	where userid=#{userid}
+    </select>
+    
+    <select id="updateMusic" parameterType="com.wgh.model.Music">
+    	update tb_music
+    	<set>
+    		auto=#{auto}
+    	</set>
+    	where userid=#{userid}
+    </select>
+</mapper>
